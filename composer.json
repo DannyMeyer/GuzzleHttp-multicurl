@@ -26,8 +26,7 @@
     },
     "scripts": {
         "check-codestyle": [
-            "ecs check src --set psr12",
-            "ecs check test --set psr12"
+            "ecs check src --set psr12"
         ],
         "fix-codestyle": [
             "ecs check src --set psr12 --fix"
