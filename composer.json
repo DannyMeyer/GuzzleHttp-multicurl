@@ -15,11 +15,6 @@
             "src/"
         ]
     },
-    "autoload-dev": {
-        "classmap": [
-            "test/"
-        ]
-    },
     "require": {
         "guzzlehttp/guzzle": "^6.5",
         "ext-json": "*"
