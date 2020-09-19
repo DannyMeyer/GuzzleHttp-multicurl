@@ -25,6 +25,7 @@
         "ext-json": "*"
     },
     "require-dev": {
+        "phpstan/phpstan": "^0.12.43",
         "phpunit/phpunit": "^8.0",
         "symplify/easy-coding-standard": "^7.1"
     },
@@ -37,6 +38,7 @@
             "ecs check src --set psr12 --fix",
             "ecs check test --set psr12 --fix"
         ],
+        "phpstan": "phpstan analyse -c config/phpstan.neon --no-interaction",
         "check-tests": [
             "phpunit -c config/phpunit.xml"
         ]

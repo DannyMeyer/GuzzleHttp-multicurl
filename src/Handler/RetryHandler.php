@@ -3,8 +3,8 @@
 namespace DannyMeyer\Curl\Handler;
 
 use Closure;
+use Exception;
 use GuzzleHttp\Exception\ConnectException;
-use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Handler\CurlMultiHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
@@ -91,7 +91,7 @@ class RetryHandler implements RetryHandlerInterface
             /** @noinspection PhpUnusedParameterInspection */
             RequestInterface $request,
             ResponseInterface $response = null,
-            RequestException $exception = null
+            Exception $exception = null
         ) use ($allowedRetries) {
             // Limit the number of retries
             if (

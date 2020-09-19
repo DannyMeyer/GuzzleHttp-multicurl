@@ -33,6 +33,7 @@ class Multicurl
     /** @var RequestInterface[] */
     protected $dataset = [];
 
+    /** @var string[] */
     protected $errors = [];
 
     /** @var ClientAdapterInterface */
@@ -49,25 +50,37 @@ class Multicurl
         $this->fallbackHandler = $fallbackHandler ?? new FileHandler();
     }
 
+    /**
+     * @param string|UriInterface $uri
+     * @param string|null         $id
+     *
+     * @return void
+     */
     public function addGetRequestByUri($uri, ?string $id = null): void
     {
         $this->addRequestAndValidate('GET', $uri, $id);
     }
 
+    /**
+     * @param string|UriInterface $uri
+     * @param string|null         $id
+     *
+     * @return void
+     */
     public function addPostRequestByUri($uri, ?string $id = null): void
     {
         $this->addRequestAndValidate('POST', $uri, $id);
     }
 
+    /**
+     * @param string              $method
+     * @param string|UriInterface $uri
+     * @param string|null         $id
+     *
+     * @return void
+     */
     private function addRequestAndValidate(string $method, $uri, ?string $id = null): void
     {
-        if (
-            $uri instanceof UriInterface === false
-            && is_string($uri) === false
-        ) {
-            new InvalidArgumentException('Request is not a string nor an instance of \Psr\Http\Message\UriInterface');
-        }
-
         $this->addRequest(new Request($method, $uri), $id);
     }
 
@@ -101,6 +114,9 @@ class Multicurl
         return count($this->errors) > 0;
     }
 
+    /**
+     * @return string[]
+     */
     public function getErrors(): array
     {
         return $this->errors;
@@ -109,7 +125,7 @@ class Multicurl
     /**
      * Execute multicurl request
      *
-     * @return array
+     * @return string[]
      * @see  https://guzzle.readthedocs.io/en/latest/quickstart.html#concurrent-requests
      *
      * @uses Client

@@ -1,0 +1,8 @@
+parameters:
+    level: max
+    parallel:
+        processTimeout: 60.0
+    tipsOfTheDay: false
+    tmpDir: cache/phpstan
+    paths:
+        - ../src/
