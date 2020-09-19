@@ -1,0 +1,44 @@
+{
+    "name": "dannymeyer/guzzlehttp-multicurl",
+    "license": "MIT",
+    "type": "library",
+    "description": "DI helper",
+    "authors": [
+        {
+            "name": "Danny Meyer",
+            "email": "danny.meyer@ravenc.de",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "autoload-dev": {
+        "classmap": [
+            "test/"
+        ]
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^6.5",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0",
+        "symplify/easy-coding-standard": "^7.1"
+    },
+    "scripts": {
+        "check-codestyle": [
+            "ecs check src --set psr12",
+            "ecs check test --set psr12"
+        ],
+        "fix-codestyle": [
+            "ecs check src --set psr12 --fix",
+            "ecs check test --set psr12 --fix"
+        ],
+        "check-tests": [
+            "phpunit -c config/phpunit.xml"
+        ]
+    }
+}
